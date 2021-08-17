@@ -4,6 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>aspnet-SduDigitalForm-3FB38291-7DFE-485C-9829-B6A506CEBD56</UserSecretsId>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SduDigitalForm.Business\SduDigitalForm.Business.csproj" />
-    <ProjectReference Include="..\SduDigitalForm.Data\SduDigitalForm.Data.csproj" />
+    <ProjectReference Include="SduDigitalForm.Business\SduDigitalForm.Business.csproj" />
+    <ProjectReference Include="SduDigitalForm.Data\SduDigitalForm.Data.csproj" />
   </ItemGroup>
 
 </Project>
