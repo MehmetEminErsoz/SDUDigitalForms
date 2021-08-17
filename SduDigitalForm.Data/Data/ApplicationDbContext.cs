@@ -19,6 +19,9 @@ namespace SduDigitalForm.Data
         {
             return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
         }
+        public ApplicationDbContext(DbContextOptions options) : base(options)
+        {
+        }
 
 
         public ApplicationDbContext() { }
