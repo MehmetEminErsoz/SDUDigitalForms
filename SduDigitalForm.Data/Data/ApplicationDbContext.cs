@@ -24,7 +24,6 @@ namespace SduDigitalForm.Data
         }
 
 
-        public ApplicationDbContext() { }
 
         public DbSet<Tbl_TypeDevice> Tbl_TypeDevices { get; set; }
         public DbSet<Tbl_OrganizationUnit> Tbl_OrganizationUnits { get; set; }
