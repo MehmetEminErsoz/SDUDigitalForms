@@ -23,9 +23,16 @@ namespace SduDigitalForm.Data
         {
         }
 
-
-
         public DbSet<Tbl_TypeDevice> Tbl_TypeDevices { get; set; }
         public DbSet<Tbl_OrganizationUnit> Tbl_OrganizationUnits { get; set; }
+        public DbSet<Tbl_IssueType> Tbl_IssueTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Tbl_IssueType>(opt => opt.HasKey(x => x.Idissue));
+           
+            
+            base.OnModelCreating(builder);
+        }
     }
 }

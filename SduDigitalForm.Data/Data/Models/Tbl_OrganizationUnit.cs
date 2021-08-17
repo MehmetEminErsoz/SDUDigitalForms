@@ -9,6 +9,7 @@ namespace SduDigitalForm.Data.Data.Models
 {
     public class Tbl_OrganizationUnit
     {
+        
         public int Id { get; set; }
         public int DisplayName { get; set; }
         public int? ParentId { get; set; }

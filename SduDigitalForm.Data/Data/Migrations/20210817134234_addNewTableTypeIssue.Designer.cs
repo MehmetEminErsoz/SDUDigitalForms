@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SduDigitalForm.Data;
 
 namespace SduDigitalForm.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210817134234_addNewTableTypeIssue")]
+    partial class addNewTableTypeIssue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -217,21 +219,6 @@ namespace SduDigitalForm.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("SduDigitalForm.Data.Data.Models.Tbl_IssueType", b =>
-                {
-                    b.Property<int>("Idissue")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("IssueType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Idissue");
-
-                    b.ToTable("Tbl_IssueTypes");
                 });
 
             modelBuilder.Entity("SduDigitalForm.Data.Data.Models.Tbl_OrganizationUnit", b =>
