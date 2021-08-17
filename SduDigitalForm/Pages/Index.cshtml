@@ -13,86 +13,117 @@
     <div class="card-header py-3">
         
 
-        <div class="card-body">
+        <div class="card-body col-md-6 ">
             <form>
-                <label>Name  :</label><br />
-                <input type="text" /><br />
-                <label>Surname :</label><br />
-                <input type="text" /><br />
 
-                <label>E-mail  :</label><br />
-                <input type="text" /><br />
 
-                <label>Phone  :</label><br />
-                <input type="text" /><br />
+                <div class="form-group">
+                    <label>Name  :</label><br />
+                    <input type="text" class="form-control" /><br />
+                
+                    <label>Surname :</label><br />
+                    <input type="text" class="form-control" /><br />
+                
 
-                <label>Address  :</label><br />
-                <input type="text" /><br />
+                
+                    <label>E-mail  :</label><br />
+                    <input type="text" class="form-control" /><br />
+                
 
-                <label>Select Unit :</label><br />
-                <select class="col-md-5">
-
-                    <option>Please Select...</option>
-                    @foreach (var item in Model.OrgUnitList)
-                    {
-
-                        <option>@item.DisplayName</option>
-
-                    }
-                </select><br />
+                
+                    <label>Phone  :</label><br />
+                    <input type="text" class="form-control" /><br />
+                
 
 
 
-                <label>Select Device Type :</label><br />
-
-
-                <select class="col-md-5">
-
-                    <option>Please Select...</option>
-                    @foreach (var item in Model.TypeDeviceList)
-                    {
-
-                        <option>@item.Name</option>
-
-                    }
-                </select><br />
+                
+                    <label>Address  :</label><br />
+                    <input type="text" class="form-control" /><br />
+                </div>
 
 
 
-                <label>Select Device Issue Type :</label><br />
+                <div class="form-group">
+                    <label>Select Unit :</label><br />
+                    <select class="col-md-5 form-control">
 
-                <select class="col-md-5">
+                        <option selected hidden>Please Select...</option>
+                        @foreach (var item in Model.OrgUnitList)
+                        {
 
-                    <option>Please Select...</option>
-                    @foreach (var item in Model.TypeIssueList)
-                    {
+                            <option>@item.DisplayName</option>
 
-                        <option>@item.IssueType</option>
-
-                    }
-                </select><br />
-
-
-
-                <label>Person asking for repair(Hatalı çeviri) :</label><br />
-                <input type="text" /><br />
+                        }
+                    </select><br />
+               
+                    <label>Select Device Type :</label><br />
 
 
-                <label>Date :</label><br />
-                <input type="date" /><br />
+                    <select class="col-md-5 form-control">
 
-                <label>Delivery Person's Name(Hatalı çeviri) :</label><br />
-                <input type="text" /><br />
+                        <option selected hidden>Please Select...</option>
+                        @foreach (var item in Model.TypeDeviceList)
+                        {
+
+                            <option>@item.Name</option>
+
+                        }
+                    </select><br />
+                
 
 
-                <label>Receiver's Name(Hatalı çeviri) :</label><br />
-                <input type="text" /><br />
-
-                <label>Note :</label><br />
-                <textarea class="col-md-10"></textarea><br />
 
 
-                <button class="btn btn-success" type="submit">Save Form</button>
+                
+                    <label>Select Device Issue Type :</label><br />
+
+                    <select class="col-md-5 form-control">
+
+                        <option selected hidden>Please Select...</option>
+                        @foreach (var item in Model.TypeIssueList)
+                        {
+
+                            <option>@item.IssueType</option>
+
+                        }
+                    </select><br />
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>Person asking for repair(Hatalı çeviri) :</label><br />
+                    <input type="text" class="form-control" /><br />
+
+                
+                    <label>Date :</label><br />
+                    <input type="date" class="form-control" /><br />
+
+                
+                    <label>Delivery Person's Name(Hatalı çeviri) :</label><br />
+                    <input type="text" class="form-control" /><br />
+               
+
+                
+                    <label>Receiver's Name(Hatalı çeviri) :</label><br />
+                    <input type="text" class="form-control" /><br />
+                
+
+                
+                    <label>Note :</label><br />
+                    <textarea class="form-control"></textarea><br />
+
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">Save Form</button>
+
+                </div>
+
+                
             </form>
 
         </div>
