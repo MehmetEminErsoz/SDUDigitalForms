@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="SduDigitalForm.Business\SduDigitalForm.Business.csproj" />
-    <ProjectReference Include="SduDigitalForm.Data\SduDigitalForm.Data.csproj" />
+    <ProjectReference Include="..\SduDigitalForm.Business\SduDigitalForm.Business.csproj" />
+    <ProjectReference Include="..\SduDigitalForm.Data\SduDigitalForm.Data.csproj" />
   </ItemGroup>
 
 </Project>
