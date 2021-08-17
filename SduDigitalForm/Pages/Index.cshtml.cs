@@ -15,6 +15,8 @@ namespace SduDigitalForm.Pages
         private readonly ILogger<IndexModel> _logger;
         public List<OrnekModel> OrnekList;
         public List<TypeDeviceDto> TypeDeviceList;
+        public List<OrganizationUnitDto> OrgUnitList;
+        public List<TypeIssueDto> TypeIssueList;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -27,6 +29,8 @@ namespace SduDigitalForm.Pages
             this.OrnekList = servis.Test();
 
             this.TypeDeviceList = servis.GetTypeDeviceDto();
+            OrgUnitList = servis.GetOrganizationUnitDto();
+            TypeIssueList = servis.GetTypeIssueDto();
         }
     }
 }

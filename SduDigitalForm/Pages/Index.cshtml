@@ -4,13 +4,110 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+<h1>Form Test Page</h1>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        
+
+        <div class="card-body">
+            <form>
+                <label>Name  :</label><br />
+                <input type="text" /><br />
+                <label>Surname :</label><br />
+                <input type="text" /><br />
+
+                <label>E-mail  :</label><br />
+                <input type="text" /><br />
+
+                <label>Phone  :</label><br />
+                <input type="text" /><br />
+
+                <label>Address  :</label><br />
+                <input type="text" /><br />
+
+                <label>Select Unit :</label><br />
+                <select class="col-md-5">
+
+                    <option>Please Select...</option>
+                    @foreach (var item in Model.OrgUnitList)
+                    {
+
+                        <option>@item.DisplayName</option>
+
+                    }
+                </select><br />
+
+
+
+                <label>Select Device Type :</label><br />
+
+
+                <select class="col-md-5">
+
+                    <option>Please Select...</option>
+                    @foreach (var item in Model.TypeDeviceList)
+                    {
+
+                        <option>@item.Name</option>
+
+                    }
+                </select><br />
+
+
+
+                <label>Select Device Issue Type :</label><br />
+
+                <select class="col-md-5">
+
+                    <option>Please Select...</option>
+                    @foreach (var item in Model.TypeIssueList)
+                    {
+
+                        <option>@item.IssueType</option>
+
+                    }
+                </select><br />
+
+
+
+                <label>Person asking for repair(Hatalı çeviri) :</label><br />
+                <input type="text" /><br />
+
+
+                <label>Date :</label><br />
+                <input type="date" /><br />
+
+                <label>Delivery Person's Name(Hatalı çeviri) :</label><br />
+                <input type="text" /><br />
+
+
+                <label>Receiver's Name(Hatalı çeviri) :</label><br />
+                <input type="text" /><br />
+
+                <label>Note :</label><br />
+                <textarea class="col-md-10"></textarea><br />
+
+
+                <button class="btn btn-success" type="submit">Save Form</button>
+            </form>
+
+        </div>
+
+
+
+
+
+
+    </div>
 </div>
 
-<h1>test</h1>
 
+
+@* ////////////DB Test Table
 <table class="table table-hover table-bordered">
     <thead>
         <tr>
@@ -28,3 +125,4 @@
         }
     </tbody>
 </table>
+    *@

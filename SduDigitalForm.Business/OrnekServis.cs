@@ -34,5 +34,33 @@ namespace SduDigitalForm.Business
             }).ToList();
             return list;
         }
+
+        public List<OrganizationUnitDto> GetOrganizationUnitDto()
+        {
+            var backList = dbContext.Tbl_OrganizationUnits.Select(s => new OrganizationUnitDto()
+            {
+                Id=s.Id,
+                DisplayName= s.DisplayName.ToString(),
+                Parent=s.Parent
+
+            }).ToList();
+
+            return backList;
+
+        }
+
+
+        public List<TypeIssueDto> GetTypeIssueDto()
+        {
+            var x = dbContext.Tbl_IssueTypes.Select(s => new TypeIssueDto()
+            {
+                Idissue=s.Idissue,
+                IssueType=s.IssueType
+
+
+            }).ToList();
+
+            return x;
+        }
     }
 }
