@@ -30,9 +30,10 @@ namespace SduDigitalForm.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Tbl_IssueType>(opt => opt.HasKey(x => x.Idissue));
-           
             
             base.OnModelCreating(builder);
         }
+
+       
     }
 }

@@ -11,7 +11,7 @@ namespace SduDigitalForm.Data.Data.Models
     {
         
         public int Id { get; set; }
-        public int DisplayName { get; set; }
+        public string DisplayName { get; set; }
         public int? ParentId { get; set; }
 
         [ForeignKey("ParentId")]
