@@ -32,5 +32,16 @@ namespace SduDigitalForm.Pages
             OrgUnitList = servis.GetOrganizationUnitDto();
             TypeIssueList = servis.GetTypeIssueDto();
         }
+
+        public void OnPost()
+        {
+            var t = Request;
+            var dto = new TypeDeviceDto()
+            {
+                Name = Request.Form["Name"],
+                
+            }
+           
+        }
     }
 }

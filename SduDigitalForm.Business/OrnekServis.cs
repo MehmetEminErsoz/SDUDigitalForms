@@ -1,5 +1,6 @@
 ﻿using SduDigitalForm.Business.Dto;
 using SduDigitalForm.Data;
+using SduDigitalForm.Data.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace SduDigitalForm.Business
             var backList = dbContext.Tbl_OrganizationUnits.Select(s => new OrganizationUnitDto()
             {
                 Id=s.Id,
-                DisplayName= s.DisplayName.ToString(),
+                DisplayName= s.DisplayName,
                 Parent=s.Parent
 
             }).ToList();
@@ -61,6 +62,12 @@ namespace SduDigitalForm.Business
             }).ToList();
 
             return x;
+        }
+
+        public void PostIssue(TypeDeviceDto model) {
+            var entity = new Tbl_TypeDevice() {Name=model.Name };
+            dbContext.Tbl_TypeDevices.Add(entity);
+            dbContext.SaveChanges();
         }
     }
 }
