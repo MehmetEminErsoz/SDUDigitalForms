@@ -31,6 +31,7 @@ namespace SduDigitalForm.Pages
             this.TypeDeviceList = servis.GetTypeDeviceDto();
             OrgUnitList = servis.GetOrganizationUnitDto();
             TypeIssueList = servis.GetTypeIssueDto();
+
         }
 
         public void OnPost()

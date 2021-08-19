@@ -64,10 +64,63 @@ namespace SduDigitalForm.Business
             return x;
         }
 
-        public void PostIssue(TypeDeviceDto model) {
-            var entity = new Tbl_TypeDevice() {Name=model.Name };
-            dbContext.Tbl_TypeDevices.Add(entity);
-            dbContext.SaveChanges();
+
+        public List<IssueDto> GetIssues()
+        {
+
+            List<IssueDto> IssueList = dbContext.Tbl_Issues.Select(s => new IssueDto()
+            {
+                Id = s.Id,
+                UserId = s.UserId,
+                TypeIssue = s.TypeIssue,
+                Address = s.Address,
+                Delivered = s.Delivered,
+                DeliveryDate = s.DeliveryDate,
+                Giver = s.Giver,
+                Mail = s.Mail,
+                Note = s.Note,
+                Phone = s.Phone,
+                RepairCustomer = s.RepairCustomer,
+                RepairDate = s.RepairDate,
+                TypeDevice = s.TypeDevice
+
+
+            }).ToList();
+
+            return IssueList;
         }
+        public void PostIssue(IssueDto model) {
+            var entity = new Tbl_Issue()
+            {
+                Id = model.Id,
+                RepairDate = model.RepairDate,
+                Address = model.Address,
+                Delivered = model.Delivered,
+                DeliveryDate = model.DeliveryDate,
+                Giver = model.Giver,
+                Mail = model.Mail,
+                Note = model.Note,
+                Phone = model.Phone,
+                RepairCustomer = model.RepairCustomer,
+                TypeDevice = model.TypeDevice,
+                TypeIssue = model.TypeIssue,
+                UserId = model.UserId
+
+            };
+
+            dbContext.Tbl_Issues.Add(entity);
+            dbContext.SaveChanges();
+
+        }
+
+        //public void PostTypeDevice(TypeDeviceDto model)
+        //{
+
+        //    var entity = new Tbl_TypeDevice() { Name = model.Name };
+        //    dbContext.Tbl_TypeDevices.Add(entity);
+        //    dbContext.SaveChanges();
+
+
+        //}
     }
 }
