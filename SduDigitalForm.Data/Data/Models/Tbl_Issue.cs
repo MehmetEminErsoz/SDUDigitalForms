@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,9 @@ namespace SduDigitalForm.Data.Data.Models
         public int Id { get; set; }
 
         public int UserId { get; set; }
-
+     
+        public int TypeIssueId { get; set; }
+        [ForeignKey("TypeIssueId")]
         public Tbl_IssueType TypeIssue { get; set; }
 
         public int RepairCustomer { get; set; }
@@ -20,6 +23,9 @@ namespace SduDigitalForm.Data.Data.Models
 
         public int Giver { get; set; }
 
+        
+        public int TypeDeviceId { get; set; }
+        [ForeignKey("TypeDeviceId")]
         public Tbl_TypeDevice TypeDevice { get; set; }
 
         public DateTime DeliveryDate { get; set; }

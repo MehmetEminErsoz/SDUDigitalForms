@@ -9,8 +9,6 @@ namespace SduDigitalForm.Business.Dto
 {
     public class TypeIssueDto
     {
-
-       
         public int Idissue { get; set; }
         public string IssueType { get; set; }
     }

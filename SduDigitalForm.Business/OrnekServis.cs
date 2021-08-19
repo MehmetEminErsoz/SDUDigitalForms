@@ -11,6 +11,8 @@ namespace SduDigitalForm.Business
         private readonly ApplicationDbContext dbContext;
         private readonly string ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=aspnet-SduDigitalForm-53bc9b9d-9d6a-45d4-8429-2a2761773502;Trusted_Connection=True;MultipleActiveResultSets=true";
 
+        public readonly string mehmet = "ali";
+
         public OrnekServis()
         {
             dbContext = new ApplicationDbContext(ConnectionString);
@@ -72,7 +74,7 @@ namespace SduDigitalForm.Business
             {
                 Id = s.Id,
                 UserId = s.UserId,
-                TypeIssue = s.TypeIssue,
+                TypeDeviceId = s.TypeDeviceId,
                 Address = s.Address,
                 Delivered = s.Delivered,
                 DeliveryDate = s.DeliveryDate,
@@ -82,7 +84,7 @@ namespace SduDigitalForm.Business
                 Phone = s.Phone,
                 RepairCustomer = s.RepairCustomer,
                 RepairDate = s.RepairDate,
-                TypeDevice = s.TypeDevice
+                
 
 
             }).ToList();
@@ -96,14 +98,14 @@ namespace SduDigitalForm.Business
                 RepairDate = model.RepairDate,
                 Address = model.Address,
                 Delivered = model.Delivered,
-                DeliveryDate = model.DeliveryDate,
+                DeliveryDate = DateTime.Now,
                 Giver = model.Giver,
                 Mail = model.Mail,
                 Note = model.Note,
                 Phone = model.Phone,
                 RepairCustomer = model.RepairCustomer,
-                TypeDevice = model.TypeDevice,
-                TypeIssue = model.TypeIssue,
+                TypeDeviceId = model.TypeDeviceId,
+                TypeIssueId = model.TypeIssueId,
                 UserId = model.UserId
 
             };

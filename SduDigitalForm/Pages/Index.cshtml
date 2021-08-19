@@ -19,54 +19,44 @@
 
                 <div class="form-group">
                     <label>Name  :</label><br />
-                    <input type="text" class="form-control"  name="Name"/><br />
+                    <input type="text" class="form-control"  name="Name" placeholder="Adınızı Girin"/><br />
                 
                     <label>Surname :</label><br />
-                    <input type="text" class="form-control" name="Surname" /><br />
+                    <input type="text" class="form-control" name="Surname" placeholder="Soyadınızı Girin" /><br />
                 
 
                 
                     <label>E-mail  :</label><br />
-                    <input type="email" class="form-control" name="Email"/><br />
+                    <input type="email" class="form-control" name="Email" placeholder="Email Girin"/><br />
                 
 
                 
                     <label>Phone  :</label><br />
-                    <input type="text" class="form-control" /><br />
+                    <input type="tel"   class="form-control" name="Phone" placeholder="000-000-00-00 Şeklinde Giriniz"/><br />
                 
 
 
 
                 
                     <label>Address  :</label><br />
-                    <input type="text" class="form-control" /><br />
+                    <input type="text" class="form-control" name="Address"/><br />
                 </div>
 
 
 
                 <div class="form-group">
-                    <label>Select Unit :</label><br />
-                    <select class="col-md-5 form-control">
-
-                        <option selected hidden>Please Select...</option>
-                        @foreach (var item in Model.OrgUnitList)
-                        {
-
-                            <option>@item.DisplayName</option>
-
-                        }
-                    </select><br />
+                   
                
                     <label>Select Device Type :</label><br />
 
 
-                    <select class="col-md-5 form-control">
+                    <select class="col-md-5 form-control" name="DeviceTypeSelect">
 
                         <option selected hidden>Please Select...</option>
                         @foreach (var item in Model.TypeDeviceList)
                         {
 
-                            <option>@item.Name</option>
+                            <option value="@item.Id">@item.Name</option>
 
                         }
                     </select><br />
@@ -78,13 +68,13 @@
                 
                     <label>Select Device Issue Type :</label><br />
 
-                    <select class="col-md-5 form-control">
+                    <select class="col-md-5 form-control" name="IssueTypeSelect">
 
                         <option selected hidden>Please Select...</option>
                         @foreach (var item in Model.TypeIssueList)
                         {
 
-                            <option>@item.IssueType</option>
+                            <option value="@item.Idissue">@item.IssueType</option>
 
                         }
                     </select><br />
@@ -96,25 +86,25 @@
                 <div class="form-group">
 
                     <label>Person asking for repair(Hatalı çeviri) :</label><br />
-                    <input type="text" class="form-control" /><br />
+                    <input type="text" class="form-control" name="RepairCustomer" /><br />
 
                 
                     <label>Date :</label><br />
-                    <input type="date" class="form-control" /><br />
+                    <input type="date" class="form-control" name="GivenDate"/><br />
 
                 
                     <label>Delivery Person's Name(Hatalı çeviri) :</label><br />
-                    <input type="text" class="form-control" /><br />
+                    <input type="text" class="form-control"name="Delivered" /><br />
                
 
                 
                     <label>Receiver's Name(Hatalı çeviri) :</label><br />
-                    <input type="text" class="form-control" /><br />
+                    <input type="text" class="form-control" name="Giver"/><br />
                 
 
                 
                     <label>Note :</label><br />
-                    <textarea class="form-control"></textarea><br />
+                    <textarea class="form-control" name="Note"></textarea><br />
 
                 </div>
 

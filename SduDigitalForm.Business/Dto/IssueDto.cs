@@ -13,7 +13,7 @@ namespace SduDigitalForm.Business.Dto
 
         public int UserId { get; set; }
 
-        public Tbl_IssueType TypeIssue { get; set; }
+        public int TypeIssueId { get; set; }
 
         public int RepairCustomer { get; set; }
 
@@ -21,7 +21,7 @@ namespace SduDigitalForm.Business.Dto
 
         public int Giver { get; set; }
 
-        public Tbl_TypeDevice TypeDevice { get; set; }
+        public int TypeDeviceId { get; set; }
 
         public DateTime DeliveryDate { get; set; }
 

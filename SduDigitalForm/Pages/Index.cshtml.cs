@@ -17,32 +17,40 @@ namespace SduDigitalForm.Pages
         public List<TypeDeviceDto> TypeDeviceList;
         public List<OrganizationUnitDto> OrgUnitList;
         public List<TypeIssueDto> TypeIssueList;
+        private readonly OrnekServis servis;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
+            servis = new OrnekServis();
         }
 
         public void OnGet()
         {
-            var servis = new OrnekServis();
             this.OrnekList = servis.Test();
-
             this.TypeDeviceList = servis.GetTypeDeviceDto();
             OrgUnitList = servis.GetOrganizationUnitDto();
             TypeIssueList = servis.GetTypeIssueDto();
-
         }
 
         public void OnPost()
         {
-            var t = Request;
-            var dto = new TypeDeviceDto()
+            var dto = new IssueDto()
             {
-                Name = Request.Form["Name"],
-
+                Note = Request.Form["Note"],
+                DeliveryDate=Convert.ToDateTime(Request.Form["GivenDate"].ToString()),
+                Mail=Request.Form["Email"],
+                Phone=Request.Form["Phone"],
+                Address = Request.Form["Address"],
+                UserId=1,
+                Delivered=2,
+                Giver=3,  
+                RepairCustomer=4,
+                RepairDate=Convert.ToDateTime("19-08-2021"),
+                TypeDeviceId=Int32.Parse(Request.Form["DeviceTypeSelect"]),
+                TypeIssueId= Int32.Parse(Request.Form["IssueTypeSelect"])
             };
-           
+            servis.PostIssue(dto);
         }
     }
 }
