@@ -39,8 +39,8 @@ namespace SduDigitalForm.Pages
             var dto = new TypeDeviceDto()
             {
                 Name = Request.Form["Name"],
-                
-            }
+
+            };
            
         }
     }
