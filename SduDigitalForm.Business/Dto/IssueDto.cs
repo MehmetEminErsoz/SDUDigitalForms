@@ -1,6 +1,7 @@
 ﻿using SduDigitalForm.Data.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,12 +28,15 @@ namespace SduDigitalForm.Business.Dto
 
         public DateTime? RepairDate { get; set; }
 
+        [Required]
         public string Address { get; set; }
 
         public string Mail { get; set; }
 
         public string Phone { get; set; }
 
+
+        [Required]
         public string Note { get; set; }
 
     }

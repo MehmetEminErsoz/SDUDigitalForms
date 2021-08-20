@@ -12,6 +12,10 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         
+        
+
+
+
 
         <div class="card-body col-md-6 ">
             <form method="post">
@@ -19,27 +23,27 @@
 
                 <div class="form-group">
                     <label>Name  :</label><br />
-                    <input type="text" class="form-control"  name="Name" placeholder="Adınızı Girin"/><br />
+                    <input type="text" class="form-control" required name="Name" placeholder="Adınızı Girin"/><br />
                 
                     <label>Surname :</label><br />
-                    <input type="text" class="form-control" name="Surname" placeholder="Soyadınızı Girin" /><br />
+                    <input type="text" class="form-control" required name ="Surname" placeholder="Soyadınızı Girin" /><br />
                 
 
                 
                     <label>E-mail  :</label><br />
-                    <input type="email" class="form-control" name="Email" placeholder="Email Girin"/><br />
+                    <input type="email" class="form-control" required name="Email" placeholder="Email Girin"/><br />
                 
 
                 
                     <label>Phone  :</label><br />
-                    <input type="tel"   class="form-control" name="Phone" placeholder="000-000-00-00 Şeklinde Giriniz"/><br />
+                    <input type="tel"   class="form-control" required name="Phone" placeholder="000-000-00-00 Şeklinde Giriniz"/><br />
                 
 
 
 
                 
                     <label>Address  :</label><br />
-                    <input type="text" class="form-control" name="Address"/><br />
+                    <input type="text" class="form-control" name="Address" required/><br />
                 </div>
 
 
@@ -90,7 +94,7 @@
 
                 
                     <label>Date :</label><br />
-                    <input type="date" class="form-control" name="GivenDate"/><br />
+                    <input type="date"  value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" name="GivenDate"/><br />
 
                 
                     <label>Delivery Person's Name(Hatalı çeviri) :</label><br />
@@ -104,12 +108,12 @@
 
                 
                     <label>Note :</label><br />
-                    <textarea class="form-control" name="Note"></textarea><br />
+                    <textarea class="form-control" asp-for="Note" name="note" id="note"></textarea><br />
 
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-success" type="submit">Save Form</button>
+                    <button class="btn btn-success" type="submit" value="Submit">Save Form</button>
 
                 </div>
 

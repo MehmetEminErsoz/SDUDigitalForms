@@ -92,6 +92,8 @@ namespace SduDigitalForm.Business
             return IssueList;
         }
         public void PostIssue(IssueDto model) {
+
+
             var entity = new Tbl_Issue()
             {
                 Id = model.Id,
@@ -110,8 +112,12 @@ namespace SduDigitalForm.Business
 
             };
 
-            dbContext.Tbl_Issues.Add(entity);
-            dbContext.SaveChanges();
+           
+           
+                dbContext.Tbl_Issues.Add(entity);
+                dbContext.SaveChanges();
+            
+           
 
         }
 

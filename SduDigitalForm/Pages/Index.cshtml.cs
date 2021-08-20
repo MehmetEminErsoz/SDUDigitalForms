@@ -5,6 +5,7 @@ using SduDigitalForm.Business;
 using SduDigitalForm.Business.Dto;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,25 +20,31 @@ namespace SduDigitalForm.Pages
         public List<TypeIssueDto> TypeIssueList;
         private readonly OrnekServis servis;
 
+
+        [Required(ErrorMessage = "Please enter name"), MaxLength(30)]
+        [BindProperty]
+
+        public string Note { get; set; }
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
             servis = new OrnekServis();
+            this.TypeDeviceList = servis.GetTypeDeviceDto();
+            OrgUnitList = servis.GetOrganizationUnitDto();
+            TypeIssueList = servis.GetTypeIssueDto();
         }
 
         public void OnGet()
         {
             this.OrnekList = servis.Test();
-            this.TypeDeviceList = servis.GetTypeDeviceDto();
-            OrgUnitList = servis.GetOrganizationUnitDto();
-            TypeIssueList = servis.GetTypeIssueDto();
         }
 
         public void OnPost()
         {
             var dto = new IssueDto()
             {
-                Note = Request.Form["Note"],
+                Note=this.Note,
                 DeliveryDate=Convert.ToDateTime(Request.Form["GivenDate"].ToString()),
                 Mail=Request.Form["Email"],
                 Phone=Request.Form["Phone"],
