@@ -11,14 +11,9 @@
 <div class="card shadow mb-auto">
     <div class="card-header py-3">
 
-        <h4>Form Test Page</h4>
-        <!--<div class="form-group">-->
-        @*Html.LabelFor(model => model., htmlAttributes: new { @class = "control-label col-md-2" })*@
-        <div class="col-md-10">
-
-            @*@Html.EditorFor(model => model., new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model., "", new { @class = "text-danger" })*@
-        </div>
+        <h4>Teknik Servis Talep Formu</h4>
+        
+        
     </div>
 
     @using (Html.BeginForm())
@@ -27,102 +22,113 @@
 
 
 
-        <div class="container-fluid card-body col-md-6 ">
-            <form method="post" class="list-group-horizontal">
+<div class="container-fluid card-body ">
+
+   
+        <form method="post">
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label>Phone  :</label><br />
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="col-md-6">
+                    <label>E-mail  :</label><br />
+                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+
+                </div>
 
 
+            </div>
 
 
-                <div class="form-group">
-
+            <div class="row g-3">
+                <div class="col-md-12">
                     <label>Address  :</label><br />
                     @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
 
-                <div class="form-group">
 
-                    <label>Phone  :</label><br />
-                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>E-mail  :</label><br />
-                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
-                </div>
-
-
-                @*Bu kısım seçilen obje kısmı*@
-                <div class="form-group">
+            <div class="row g-3">
+                <div class="form-group col-md-6">
                     <label>Select Device  Type :</label><br />
-
-                    @Html.DropDownListFor(m => m.TypeDeviceList, new SelectList(Model.TypeDeviceList, "Id", "Name"), "Selected Hidden özelliği kullan")
-
+                    @Html.DropDownListFor(m => m.TypeDeviceList, new SelectList(Model.TypeDeviceList, "Id", "Name"), new { @class = "form-control" })
+                
                 </div>
 
-                <div class="form-group">
+
+                <div class="form-group col-md-6">
                     <label>Select Device Issue Type :</label><br />
-
-                    @Html.DropDownListFor(m => m.TypeIssueList, new SelectList(Model.TypeIssueList, "Idissue", "IssueType"), "Selected Hidden özelliği kullan")
-
+                    @Html.DropDownListFor(m => m.TypeIssueList, new SelectList(Model.TypeIssueList, "Idissue", "IssueType"), new { @class = "form-control" })
                 </div>
+            </div>
 
-                <div class="form-group">
+            
 
-                    <label>Select Unit:</label><br />
-
-                    @Html.DropDownListFor(m => m.OrgUnitList, new SelectList(Model.OrgUnitList, "Id", "DisplayName"), "Selected Hidden özelliği kullan")
-
-                </div>
-
-                <div class="form-group">
-
+            <div class="row g-3">
+                <div class="col-md-6">
                     <label>Date :</label><br />
                     <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" name="GivenDate" /><br />
+
                 </div>
 
-                <div class="form-group">
-
+                <div class="col-md-6">
                     <label>Person asking for repair(Hatalı çeviri) :</label><br />
-                    <input type="text" class="form-control" name="RepairCustomer" /><br />
+                    <input type="text" class="form-control" name="RepairCustomer" />
+                </div>
+            </div>
 
+          
+
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label>Delivery Person's Name(Hatalı çeviri) :</label>
+                    <input type="text" class="form-control" name="Delivered" />
                 </div>
 
 
-
-                <div class="form-group">
-                    <label>Delivery Person's Name(Hatalı çeviri) :</label><br />
-                    <input type="text" class="form-control" name="Delivered" /><br />
-
-                </div>
-
-                <div class="form-group">
+                <div class="col-md-6">
                     <label>Receiver's Name(Hatalı çeviri) :</label><br />
                     <input type="text" class="form-control" name="Giver" /><br />
-
                 </div>
+            </div>
 
 
-                <div class="form-group">
 
+           
+            
+
+            <div class="row g-3">
+                <div class="col-md-12">
                     <label>Note :</label><br />
-                    @Html.TextAreaFor(model => model.Note,10,5,new { @class="form-control"})
-
-                    @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                    <textarea class="form-control" asp-for="Note" name="note" id="note"></textarea><br />
                 </div>
+            </div>
+            
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit" value="Submit">Save Form</button>
 
-                <div class="form-group">
-                    <button class="btn btn-success" type="submit" value="Submit">Save Form</button>
-
+                    </div>
                 </div>
-            </form>
+            </div>
+        </form>
+    </div>
+   
 
-        </div>
+
+
+
 
     }
 </div>
