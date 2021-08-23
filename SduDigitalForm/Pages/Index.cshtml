@@ -6,148 +6,148 @@
 
 
 
-<h1>Form Test Page</h1>
 
 
-<div class="card shadow mb-4">
+<div class="card shadow mb-auto">
     <div class="card-header py-3">
-        
-        
+
+        <h4>Form Test Page</h4>
+        <!--<div class="form-group">-->
+        @*Html.LabelFor(model => model., htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+
+            @*@Html.EditorFor(model => model., new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model., "", new { @class = "text-danger" })*@
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+            {
 
 
 
 
-        <div class="card-body col-md-6 ">
-            <form method="post">
+        <div class="container-fluid card-body col-md-6 ">
+            <form method="post" class="list-group-horizontal">
+
+
 
 
                 <div class="form-group">
-                    <label>Name  :</label><br />
-                    <input type="text" class="form-control" required name="Name" placeholder="Adınızı Girin"/><br />
-                
-                    <label>Surname :</label><br />
-                    <input type="text" class="form-control" required name ="Surname" placeholder="Soyadınızı Girin" /><br />
-                
 
-                
-                    <label>E-mail  :</label><br />
-                    <input type="email" class="form-control" required name="Email" placeholder="Email Girin"/><br />
-                
-
-                
-                    <label>Phone  :</label><br />
-                    <input type="tel"   class="form-control" required name="Phone" placeholder="000-000-00-00 Şeklinde Giriniz"/><br />
-                
-
-
-
-                
                     <label>Address  :</label><br />
-                    <input type="text" class="form-control" name="Address" required/><br />
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                 </div>
 
 
+                <div class="form-group">
+
+                    <label>Phone  :</label><br />
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+
 
                 <div class="form-group">
-                   
-               
-                    <label>Select Device Type :</label><br />
+
+                    <label>E-mail  :</label><br />
+                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                </div>
 
 
-                    <select class="col-md-5 form-control" name="DeviceTypeSelect">
+                @*Bu kısım seçilen obje kısmı*@
+                <div class="form-group">
+                    <label>Select Device  Type :</label><br />
 
-                        <option selected hidden>Please Select...</option>
-                        @foreach (var item in Model.TypeDeviceList)
-                        {
+                    @Html.DropDownListFor(m => m.TypeDeviceList, new SelectList(Model.TypeDeviceList, "Id", "Name"), "Selected Hidden özelliği kullan")
 
-                            <option value="@item.Id">@item.Name</option>
+                </div>
 
-                        }
-                    </select><br />
-                
-
-
-
-
-                
+                <div class="form-group">
                     <label>Select Device Issue Type :</label><br />
 
-                    <select class="col-md-5 form-control" name="IssueTypeSelect">
-
-                        <option selected hidden>Please Select...</option>
-                        @foreach (var item in Model.TypeIssueList)
-                        {
-
-                            <option value="@item.Idissue">@item.IssueType</option>
-
-                        }
-                    </select><br />
+                    @Html.DropDownListFor(m => m.TypeIssueList, new SelectList(Model.TypeIssueList, "Idissue", "IssueType"), "Selected Hidden özelliği kullan")
 
                 </div>
 
+                <div class="form-group">
 
+                    <label>Select Unit:</label><br />
+
+                    @Html.DropDownListFor(m => m.OrgUnitList, new SelectList(Model.OrgUnitList, "Id", "DisplayName"), "Selected Hidden özelliği kullan")
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Date :</label><br />
+                    <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" name="GivenDate" /><br />
+                </div>
 
                 <div class="form-group">
 
                     <label>Person asking for repair(Hatalı çeviri) :</label><br />
                     <input type="text" class="form-control" name="RepairCustomer" /><br />
 
-                
-                    <label>Date :</label><br />
-                    <input type="date"  value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" name="GivenDate"/><br />
+                </div>
 
-                
+
+
+                <div class="form-group">
                     <label>Delivery Person's Name(Hatalı çeviri) :</label><br />
-                    <input type="text" class="form-control"name="Delivered" /><br />
-               
+                    <input type="text" class="form-control" name="Delivered" /><br />
 
-                
+                </div>
+
+                <div class="form-group">
                     <label>Receiver's Name(Hatalı çeviri) :</label><br />
-                    <input type="text" class="form-control" name="Giver"/><br />
-                
+                    <input type="text" class="form-control" name="Giver" /><br />
 
-                
+                </div>
+
+
+                <div class="form-group">
+
                     <label>Note :</label><br />
-                    <textarea class="form-control" asp-for="Note" name="note" id="note"></textarea><br />
+                    @Html.TextAreaFor(model => model.Note,10,5,new { @class="form-control"})
 
+                    @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
                     <button class="btn btn-success" type="submit" value="Submit">Save Form</button>
 
                 </div>
-
-                
             </form>
 
         </div>
 
-
-
-
-
-
-    </div>
+    }
 </div>
 
 
 
+
 @* ////////////DB Test Table
-<table class="table table-hover table-bordered">
-    <thead>
-        <tr>
-            <th>Cihaz Türü Id</th>
-            <th>Cihaz Türü Adı</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.TypeDeviceList)
-        {
+    <table class="table table-hover table-bordered">
+        <thead>
             <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
+                <th>Cihaz Türü Id</th>
+                <th>Cihaz Türü Adı</th>
             </tr>
-        }
-    </tbody>
-</table>
-    *@
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TypeDeviceList)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+*@
+
+
