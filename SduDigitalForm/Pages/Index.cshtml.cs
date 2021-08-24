@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SduDigitalForm.Business;
 using SduDigitalForm.Business.Dto;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,7 +20,7 @@ namespace SduDigitalForm.Pages
         public List<OrganizationUnitDto> OrgUnitList;
         public List<TypeIssueDto> TypeIssueList;
         private readonly OrnekServis servis;
-
+        [BindProperty]
         public int Id { get; set; }
         [BindProperty]
         public int UserId { get; set; }
@@ -35,7 +36,7 @@ namespace SduDigitalForm.Pages
         public int TypeDeviceId { get; set; }
         [BindProperty]
         public DateTime DeliveryDate { get; set; }
-
+        [BindProperty]
         public DateTime? RepairDate { get; set; }
 
         [Required]
@@ -58,6 +59,7 @@ namespace SduDigitalForm.Pages
         {
             _logger = logger;
             servis = new OrnekServis();
+          
             this.TypeDeviceList = servis.GetTypeDeviceDto();
             OrgUnitList = servis.GetOrganizationUnitDto();
             TypeIssueList = servis.GetTypeIssueDto();
@@ -107,9 +109,12 @@ namespace SduDigitalForm.Pages
                 RepairDate = Convert.ToDateTime("10-09-2021"),
                 //Şuanda html helper kullanmadan yaptığım için listeden seçtirerek aldığım objeler
 
-                TypeDeviceId = Int32.Parse(Request.Form["DeviceTypeSelect"]),
-                TypeIssueId= Int32.Parse(Request.Form["IssueTypeSelect"]),
-                DeliveryDate = Convert.ToDateTime(Request.Form["GivenDate"].ToString()),
+                TypeDeviceId=this.TypeDeviceId,
+                TypeIssueId=this.TypeIssueId,
+                DeliveryDate=this.DeliveryDate
+                //TypeDeviceId = Int32.Parse(Request.Form["DeviceTypeSelect"]),
+                //TypeIssueId= Int32.Parse(Request.Form["IssueTypeSelect"]),
+                //DeliveryDate = Convert.ToDateTime(Request.Form["GivenDate"].ToString()),
 
             };
             servis.PostIssue(dtodnm);

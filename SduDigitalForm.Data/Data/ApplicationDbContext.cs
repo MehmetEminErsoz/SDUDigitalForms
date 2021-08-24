@@ -23,6 +23,7 @@ namespace SduDigitalForm.Data
         {
         }
 
+        public DbSet<Tbl_User> AspNetUsers { get; set; }
         public DbSet<Tbl_TypeDevice> Tbl_TypeDevices { get; set; }
         public DbSet<Tbl_OrganizationUnit> Tbl_OrganizationUnits { get; set; }
         public DbSet<Tbl_IssueType> Tbl_IssueTypes { get; set; }

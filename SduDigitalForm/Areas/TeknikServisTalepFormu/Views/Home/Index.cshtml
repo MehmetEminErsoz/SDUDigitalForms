@@ -1,8 +1,15 @@
-﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Home page";
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
+@using SduDigitalForm.Areas.TeknikServisTalepFormu.Models
+@model TeknikServisTalepFormuViewModel
+
+
+
+<h1>Teknik Servis Talep Formu</h1>
+
+
 
 <div class="card shadow mb-auto">
     <div class="card-header py-3">
@@ -125,28 +132,5 @@
 
     }
 </div>
-
-
-
-
-@* ////////////DB Test Table
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>Cihaz Türü Id</th>
-                <th>Cihaz Türü Adı</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.TypeDeviceList)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-*@
 
 

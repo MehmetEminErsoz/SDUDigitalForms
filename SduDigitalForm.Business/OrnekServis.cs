@@ -19,7 +19,7 @@ namespace SduDigitalForm.Business
         }
 
         public List<OrnekModel> Test()
-        {
+       {
             var list = new List<OrnekModel>()
             {
                 new OrnekModel(){Ad="test1",Yas=10},

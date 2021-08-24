@@ -11,16 +11,20 @@ namespace SduDigitalForm.Data.Data.Models
     {
         public int Id { get; set; }
 
+        //Cihaz Sahibi
         public int UserId { get; set; }
      
         public int TypeIssueId { get; set; }
         [ForeignKey("TypeIssueId")]
         public Tbl_IssueType TypeIssue { get; set; }
 
+        //Onarım İsteyen
         public int RepairCustomer { get; set; }
 
+        //Teslim Alan 
         public int Delivered { get; set; }
 
+        //Teslim Eden
         public int Giver { get; set; }
 
         
