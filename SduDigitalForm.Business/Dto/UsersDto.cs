@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using SduDigitalForm.Data.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,18 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SduDigitalForm.Data.Data.Models
+namespace SduDigitalForm.Business.Dto
 {
-    public class Tbl_User : IdentityUser
+    public class UsersDto
     {
-       
+
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Title { get; set; }
+       
 
+     
         public int OrganizationUnitId { get; set; }
         [ForeignKey("TypeIssueId")]
-        public Tbl_OrganizationUnit Tbl_OrganizationUnit { get; set; } 
-
+        public Tbl_OrganizationUnit Tbl_OrganizationUnit { get; set; }
     }
 }

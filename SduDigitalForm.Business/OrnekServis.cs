@@ -66,7 +66,17 @@ namespace SduDigitalForm.Business
             return x;
         }
 
-
+        public List<UsersDto> GetUsersDto()
+        {
+           List<UsersDto> auser = dbContext.AspNetUsers.Select(s => new UsersDto()
+            {
+                Name = s.Name,
+                Surname=s.Surname,
+                Title=s.Title,
+               OrganizationUnitId=s.OrganizationUnitId
+            }).ToList();
+            return auser;
+        }
         public List<IssueDto> GetIssues()
         {
 
@@ -92,8 +102,6 @@ namespace SduDigitalForm.Business
             return IssueList;
         }
         public void PostIssue(IssueDto model) {
-
-
             var entity = new Tbl_Issue()
             {
                 Id = model.Id,
@@ -111,15 +119,26 @@ namespace SduDigitalForm.Business
                 UserId = model.UserId
 
             };
-
-           
-           
                 dbContext.Tbl_Issues.Add(entity);
                 dbContext.SaveChanges();
-            
-           
-
         }
+
+        public void PostUser(UsersDto umdl)
+        {
+            var ent = new Tbl_User()
+            {
+                Name = umdl.Name,
+                Surname=umdl.Surname,
+                OrganizationUnitId=umdl.OrganizationUnitId,
+                Title=umdl.Title
+            };
+
+            dbContext.AspNetUsers.Add(ent);
+            dbContext.SaveChanges();
+        }
+
+
+
 
         //public void PostTypeDevice(TypeDeviceDto model)
         //{

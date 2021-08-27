@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using SduDigitalForm.Business;
 using SduDigitalForm.Business.Dto;
 using System;
 using System.Collections.Generic;
@@ -10,8 +12,14 @@ namespace SduDigitalForm.Areas.TeknikServisTalepFormu.Models
 {
     public class TeknikServisTalepFormuViewModel
     {
-
-      
+        public List<OrnekModel> OrnekList;
+        public List<TypeDeviceDto> TypeDeviceList;
+        public List<OrganizationUnitDto> OrgUnitList;
+        public List<TypeIssueDto> TypeIssueList;
+        public List<UsersDto> userList;
+        private readonly OrnekServis servis;
+        
+        
 
         [BindProperty]
         public int Id { get; set; }
@@ -49,6 +57,6 @@ namespace SduDigitalForm.Areas.TeknikServisTalepFormu.Models
         public string Note { get; set; }
 
 
-
+   
     }
 }
