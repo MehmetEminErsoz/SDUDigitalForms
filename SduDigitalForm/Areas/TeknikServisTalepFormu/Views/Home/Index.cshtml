@@ -2,22 +2,39 @@
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
     var islemSonuc = ViewData["islemSonuc"];
+   
+
+   
+   
+
 }
 @using SduDigitalForm.Areas.TeknikServisTalepFormu.Models
 @model TeknikServisTalepFormuViewModel
 
 
-<h1>Teknik Servis Talep Formu</h1>
+
 <div class="card shadow mb-auto">
     <div class="card-header py-3">
-        <h4>Teknik Servis Talep Formu</h4>
+        <h4>Teknik Servis Talep Formu </h4>
+        <h6>Razorpage-MVC</h6>
     </div>
-    @if (islemSonuc!=null) { 
+    @if (islemSonuc != null)
+    {
         <div class="alert alert-success">
             <h4>@islemSonuc</h4>
+
         </div>
     }
-    
+    @if (Model.sayinkisi != null)
+    {
+        <div class="alert alert-success">
+            <h4>Sayın @Model.sayinkisi Cevabınız kaydedildi.</h4>
+
+        </div>
+    }
+
+
+
     @using (Html.BeginForm())
     {
 
@@ -113,7 +130,7 @@
             <div class="row g-3">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <a href="/">content</a><button class="btn btn-success" type="submit" value="Submit">Save Form</button>
+                        <button class="btn btn-success" type="submit" value="Submit">Save Form</button>
 
                     </div>
                 </div>
@@ -122,23 +139,28 @@
         </div>
 
 
+
+        <table>
+            <tr>
+
+
+                @foreach (var item in Model.userList)
+                {
+                    <td> @item.Name  </td>
+                    <td>   @item.Surname</td>
+
+                    <td>@item.OrganizationUnitId</td>
+                }
+
+            </tr>
+
+            <tr>
+            </tr>
+        </table>
     }
-    
 
-<table>
-    <tr>
-      
 
-        @foreach (  var item in Model.userList)
-	{
-		 <td> @item.Name  </td>
-         <td    >   @item.Surname</td>
-         
-         <td>@item.OrganizationUnitId</td>
-	}
-        
-    </tr>
-</table>
+
 </div>
 
 

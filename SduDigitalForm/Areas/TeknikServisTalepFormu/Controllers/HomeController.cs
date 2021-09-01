@@ -19,6 +19,7 @@ namespace SduDigitalForm.Areas.TeknikServisTalepFormu.Controllers
         public List<OrganizationUnitDto> OrgUnitList;
         public List<TypeIssueDto> TypeIssueList;
         public List<UsersDto> UserList;
+        public string Sayinkisi;
 
 
         //Dbcontext ten türetmek yerine doğru olanı Servisi türetmek servisteki veri çekme metodlarını kullanmak
@@ -29,19 +30,24 @@ namespace SduDigitalForm.Areas.TeknikServisTalepFormu.Controllers
         }
         private TeknikServisTalepFormuViewModel GetDefaultModel()
         {
+            
             var model = new TeknikServisTalepFormuViewModel()
             {
                 TypeDeviceList = ServiceMVC.GetTypeDeviceDto(),
                 TypeIssueList = ServiceMVC.GetTypeIssueDto(),
-               userList = ServiceMVC.GetUsersDto(),
+                userList = ServiceMVC.GetUsersDto(),
+                
             };
+            model.sayinkisi = Sayinkisi;
             return model;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+           
             var model = GetDefaultModel();
+          
             return View(model);
         }
 
@@ -65,10 +71,12 @@ namespace SduDigitalForm.Areas.TeknikServisTalepFormu.Controllers
             ServiceMVC.PostIssue(dtoModel);
 
 
-
-            ViewData["islemSonuc"] = "Başarılı";
+            Sayinkisi = ServiceMVC.UserCall(model.Mail);
+           
+            
+            //ViewData["islemSonuc"] = "Başarılı";
             var defaultModel = GetDefaultModel();
-
+            
             
             return View(defaultModel);
         }

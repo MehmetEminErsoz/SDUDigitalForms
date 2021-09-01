@@ -18,9 +18,9 @@ namespace SduDigitalForm.Areas.TeknikServisTalepFormu.Models
         public List<TypeIssueDto> TypeIssueList;
         public List<UsersDto> userList;
         private readonly OrnekServis servis;
+        public string sayinkisi;
         
         
-
         [BindProperty]
         public int Id { get; set; }
         [BindProperty]

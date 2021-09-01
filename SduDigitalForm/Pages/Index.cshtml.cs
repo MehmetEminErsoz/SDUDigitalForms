@@ -67,7 +67,7 @@ namespace SduDigitalForm.Pages
 
         public void OnGet()
         {
-            this.OrnekList = servis.Test();
+            
         }
 
         public void OnPost()

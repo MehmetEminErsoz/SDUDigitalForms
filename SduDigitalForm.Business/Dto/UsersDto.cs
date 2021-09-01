@@ -18,7 +18,7 @@ namespace SduDigitalForm.Business.Dto
 
      
         public int OrganizationUnitId { get; set; }
-        [ForeignKey("TypeIssueId")]
+        [ForeignKey("Id")]
         public Tbl_OrganizationUnit Tbl_OrganizationUnit { get; set; }
     }
 }

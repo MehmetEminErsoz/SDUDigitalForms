@@ -9,26 +9,13 @@ namespace SduDigitalForm.Business
     public class OrnekServis
     {
         private readonly ApplicationDbContext dbContext;
+        public List<UsersDto> sorguparam;
+        public string mailcek;
         private readonly string ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=aspnet-SduDigitalForm-53bc9b9d-9d6a-45d4-8429-2a2761773502;Trusted_Connection=True;MultipleActiveResultSets=true";
-
-        public readonly string mehmet = "ali";
-
         public OrnekServis()
         {
             dbContext = new ApplicationDbContext(ConnectionString);
         }
-
-        public List<OrnekModel> Test()
-       {
-            var list = new List<OrnekModel>()
-            {
-                new OrnekModel(){Ad="test1",Yas=10},
-                new OrnekModel(){Ad="test2",Yas=10},
-                new OrnekModel(){Ad="test3",Yas=10},
-            };
-            return list;
-        }
-
         public List<TypeDeviceDto> GetTypeDeviceDto()
         {
             List<TypeDeviceDto> list =dbContext.Tbl_TypeDevices.Select(x=> new TypeDeviceDto(){
@@ -45,27 +32,18 @@ namespace SduDigitalForm.Business
                 Id=s.Id,
                 DisplayName= s.DisplayName,
                 Parent=s.Parent
-
             }).ToList();
-
             return backList;
-
         }
-
-
         public List<TypeIssueDto> GetTypeIssueDto()
         {
             var x = dbContext.Tbl_IssueTypes.Select(s => new TypeIssueDto()
             {
                 Idissue=s.Idissue,
                 IssueType=s.IssueType
-
-
             }).ToList();
-
             return x;
         }
-
         public List<UsersDto> GetUsersDto()
         {
            List<UsersDto> auser = dbContext.AspNetUsers.Select(s => new UsersDto()
@@ -79,7 +57,6 @@ namespace SduDigitalForm.Business
         }
         public List<IssueDto> GetIssues()
         {
-
             List<IssueDto> IssueList = dbContext.Tbl_Issues.Select(s => new IssueDto()
             {
                 Id = s.Id,
@@ -94,9 +71,6 @@ namespace SduDigitalForm.Business
                 Phone = s.Phone,
                 RepairCustomer = s.RepairCustomer,
                 RepairDate = s.RepairDate,
-                
-
-
             }).ToList();
 
             return IssueList;
@@ -119,10 +93,50 @@ namespace SduDigitalForm.Business
                 UserId = model.UserId
 
             };
+            
                 dbContext.Tbl_Issues.Add(entity);
                 dbContext.SaveChanges();
-        }
+            mailcek=
+            entity.Mail;
 
+
+
+             sorguparam = dbContext.AspNetUsers.Where(s => s.Email == entity.Mail).Select(s=>new UsersDto() { 
+             Name=s.Name,
+              Surname=s.Surname,
+               OrganizationUnitId=s.OrganizationUnitId
+               , Title=s.Title
+
+             }).ToList();
+  
+        }
+       
+        public string UserCall(string? mail)
+        {
+
+            if (mail!=null)
+            {
+                sorguparam = dbContext.AspNetUsers.Where(s => s.Email == mail).Select(s => new UsersDto()
+                {
+                    Name = s.Name,
+                    Surname = s.Surname,
+                    OrganizationUnitId = s.OrganizationUnitId
+               , 
+                    Title = s.Title
+
+                }).ToList();
+
+                return sorguparam.Select(s => s.Name).FirstOrDefault() ;
+            }
+
+
+            
+                var x = sorguparam;
+            var ret = dbContext.AspNetUsers.Select(s => s.Name).FirstOrDefault() ;
+            
+
+            return ret;
+        }
         public void PostUser(UsersDto umdl)
         {
             var ent = new Tbl_User()
@@ -136,18 +150,5 @@ namespace SduDigitalForm.Business
             dbContext.AspNetUsers.Add(ent);
             dbContext.SaveChanges();
         }
-
-
-
-
-        //public void PostTypeDevice(TypeDeviceDto model)
-        //{
-
-        //    var entity = new Tbl_TypeDevice() { Name = model.Name };
-        //    dbContext.Tbl_TypeDevices.Add(entity);
-        //    dbContext.SaveChanges();
-
-
-        //}
     }
 }
