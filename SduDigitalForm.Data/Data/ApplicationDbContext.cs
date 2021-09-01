@@ -32,7 +32,12 @@ namespace SduDigitalForm.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Tbl_IssueType>(opt => opt.HasKey(x => x.Idissue));
-            
+
+            builder.Entity<Tbl_IssueType>(opt => 
+                                opt.HasData(new Tbl_IssueType() {Idissue=1,IssueType="Ekran değişimi" }
+                                )
+                            );
+
             base.OnModelCreating(builder);
         }
 
