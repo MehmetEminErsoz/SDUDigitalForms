@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using SduDigitalForm.Areas.TeknikServisTalepFormu.Models;
 using SduDigitalForm.Business;
 using SduDigitalForm.Business.Dto;
 using SduDigitalForm.Data;
+using SduDigitalForm.Data.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +47,8 @@ namespace SduDigitalForm.Areas.TeknikServisTalepFormu.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-           
+            
+
             var model = GetDefaultModel();
           
             return View(model);
