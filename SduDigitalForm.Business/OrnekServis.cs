@@ -75,6 +75,7 @@ namespace SduDigitalForm.Business
 
             return IssueList;
         }
+
         public void PostIssue(IssueDto model) {
             var entity = new Tbl_Issue()
             {
@@ -91,48 +92,39 @@ namespace SduDigitalForm.Business
                 TypeDeviceId = model.TypeDeviceId,
                 TypeIssueId = model.TypeIssueId,
                 UserId = model.UserId
-
             };
             
-                dbContext.Tbl_Issues.Add(entity);
-                dbContext.SaveChanges();
-            mailcek=
-            entity.Mail;
+            dbContext.Tbl_Issues.Add(entity);
+            dbContext.SaveChanges();
+            mailcek = entity.Mail;
 
-
-
-             sorguparam = dbContext.AspNetUsers.Where(s => s.Email == entity.Mail).Select(s=>new UsersDto() { 
-             Name=s.Name,
-              Surname=s.Surname,
-               OrganizationUnitId=s.OrganizationUnitId
-               , Title=s.Title
-
-             }).ToList();
+            sorguparam = dbContext.AspNetUsers.Where(s => s.Email == entity.Mail).Select(s => new UsersDto() {
+                Name = s.Name,
+                Surname = s.Surname,
+                OrganizationUnitId = s.OrganizationUnitId,
+                Title = s.Title
+            }).ToList();
   
         }
        
         public string UserCall(string? mail)
         {
-
-            if (mail!=null)
+            if (mail != null)
             {
                 sorguparam = dbContext.AspNetUsers.Where(s => s.Email == mail).Select(s => new UsersDto()
                 {
                     Name = s.Name,
                     Surname = s.Surname,
-                    OrganizationUnitId = s.OrganizationUnitId
-               , 
+                    OrganizationUnitId = s.OrganizationUnitId,
                     Title = s.Title
 
                 }).ToList();
 
-                return sorguparam.Select(s => s.Name).FirstOrDefault() ;
+                return sorguparam.Select(s => s.Name).FirstOrDefault();
             }
-
-
             
-                var x = sorguparam;
-            var ret = dbContext.AspNetUsers.Select(s => s.Name).FirstOrDefault() ;
+            var x = sorguparam;
+            var ret = dbContext.AspNetUsers.Select(s => s.Name).FirstOrDefault();
             
 
             return ret;

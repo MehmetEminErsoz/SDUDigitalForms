@@ -35,7 +35,7 @@ namespace SduDigitalForm.Areas.TeknikServisTalepFormu.Controllers
             {
                 TypeDeviceList = ServiceMVC.GetTypeDeviceDto(),
                 TypeIssueList = ServiceMVC.GetTypeIssueDto(),
-                userList = ServiceMVC.GetUsersDto(),
+                //userList = ServiceMVC.GetUsersDto(),
                 
             };
             model.sayinkisi = Sayinkisi;

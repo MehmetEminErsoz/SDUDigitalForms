@@ -2,12 +2,8 @@
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
     var islemSonuc = ViewData["islemSonuc"];
-   
-
-   
-   
-
 }
+
 @using SduDigitalForm.Areas.TeknikServisTalepFormu.Models
 @model TeknikServisTalepFormuViewModel
 
@@ -29,7 +25,6 @@
     {
         <div class="alert alert-success">
             <h4>Sayın @Model.sayinkisi Cevabınız kaydedildi.</h4>
-
         </div>
     }
 
@@ -40,8 +35,8 @@
 
         <div class="container-fluid card-body ">
 
-            <div class="row g-3">
 
+            <div class="row g-3">
                 <div class="col-md-6">
                     <label>Phone  :</label><br />
                     @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
@@ -49,15 +44,15 @@
 
                 </div>
 
+
                 <div class="col-md-6">
                     <label>E-mail  :</label><br />
                     @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
 
                 </div>
-
-
             </div>
+
 
 
             <div class="row g-3">
@@ -74,7 +69,6 @@
                 <div class="form-group col-md-6">
                     <label>Select Device  Type :</label><br />
                     @Html.DropDownListFor(m => m.TypeDeviceId, new SelectList(Model.TypeDeviceList, "Id", "Name"), new { @class = "form-control" })
-
                 </div>
 
 
@@ -90,15 +84,14 @@
                 <div class="col-md-6">
                     <label>Date :</label><br />
                     <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" name="GivenDate" /><br />
-
                 </div>
+
 
                 <div class="col-md-6">
                     <label>Person asking for repair(Hatalı çeviri) :</label><br />
                     <input type="text" class="form-control" name="RepairCustomer" />
                 </div>
             </div>
-
 
 
 
@@ -117,9 +110,6 @@
 
 
 
-
-
-
             <div class="row g-3">
                 <div class="col-md-12">
                     <label>Note :</label><br />
@@ -131,7 +121,6 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <button class="btn btn-success" type="submit" value="Submit">Save Form</button>
-
                     </div>
                 </div>
             </div>
@@ -140,7 +129,7 @@
 
 
 
-        <table>
+        @*<table>
             <tr>
 
 
@@ -156,7 +145,7 @@
 
             <tr>
             </tr>
-        </table>
+        </table>*@
     }
 
 
